@@ -1,9 +1,12 @@
+import os
+
 from flask import Flask
 
 app = Flask(__name__)
 
+texto = os.getenv("TEXTO","OpenDevUFCG é show!")
 with open("word.txt", "w") as f:
-    f.write("OpenDevUFCG é show!")
+    f.write(texto)
 
 @app.route('/')
 def read():
@@ -17,4 +20,4 @@ def write(word):
         f.write(word)
     return "Mudado :)"
     
-app.run()
+app.run(host="0.0.0.0")

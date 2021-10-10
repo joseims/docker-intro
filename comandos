@@ -2,12 +2,11 @@ docker build -t intro .
 
 docker run --name intro-docker  intro
 
-docker exec -it intro-docker /bin/bash
+docker run --rm --name meu-container -p 6000:5000  docker-intro
 
-ERRO DE REDE --> --network host
-MUDAR PORTA --> -p 5000:5000
-ERRO DO ENDEREÇO RELATIVO DO ARQUIVO word.txt
-Variavel de ambiente:
-    -> dockerfile ENV TEXTO="testando um ngc aqui"
-    ->  import os
-        os.getenv('TEXTO')
+docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/app/word.txt  docker-intro
+
+docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/app/word.txt -e TEXTO="Meu texto incrivel" docker-intro
+
+
+docker exec -it intro-docker /bin/bash
