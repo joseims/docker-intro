@@ -2,11 +2,10 @@ docker build -t intro .
 
 docker run --name intro-docker  intro
 
-docker run --rm --name meu-container -p 6000:5000  docker-intro
+docker run --rm --name meu-container -p 6000:5000  intro
 
-docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/app/word.txt  docker-intro
+docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/word.txt  intro
 
-docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/app/word.txt -e TEXTO="Meu texto incrivel" docker-intro
+docker run --rm --name meu-container -p 6000:5000  -v `pwd`/minha-palavra.txt:/word.txt -e TEXTO="Meu texto incrivel" intro
 
-
-docker exec -it intro-docker /bin/bash
+docker exec -it meu-container /bin/bash
